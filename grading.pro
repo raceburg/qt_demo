@@ -26,35 +26,35 @@ LIBS += -lopencv_core \
         -lopencv_highgui
 
 SOURCES += \
-    contours_processing.cpp \
-    main.cpp \
-    mainwindow.cpp \
-    polygonitem.cpp \
-    statisticobjects.cpp \
-    view.cpp \
-    wascene.cpp \
-    wascenegrid.cpp \
-    wascenemanuallayer.cpp \
-    wasceneruler.cpp
+    src/contours_processing.cpp \
+    src/main.cpp \
+    src/mainwindow.cpp \
+    src/polygonitem.cpp \
+    src/statisticobjects.cpp \
+    src/view.cpp \
+    src/wascene.cpp \
+    src/wascenegrid.cpp \
+    src/wascenemanuallayer.cpp \
+    src/wasceneruler.cpp
 
 HEADERS += \
-    contour_inf.h \
-    contours_processing.h \
-    gradingtask.h \
-    mainwindow.h \
-    messagetype.h \
-    polygonitem.h \
-    rulerstruct.h \
-    statisticobjects.h \
-    view.h \
-    wascene.h \
-    wascenegrid.h \
-    wascenemanuallayer.h \
-    wasceneruler.h \
-    wavariables.h
+    src/contour_inf.h \
+    src/contours_processing.h \
+    src/gradingtask.h \
+    src/mainwindow.h \
+    src/messagetype.h \
+    src/polygonitem.h \
+    src/rulerstruct.h \
+    src/statisticobjects.h \
+    src/view.h \
+    src/wascene.h \
+    src/wascenegrid.h \
+    src/wascenemanuallayer.h \
+    src/wasceneruler.h \
+    src/wavariables.h
 
 FORMS += \
-    mainwindow.ui
+    src/mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
