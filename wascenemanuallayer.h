@@ -45,7 +45,7 @@ public:
     // установить прозрачность
     void                    setOpacity(double opacity);
     // удалить слой
-    void                    remove(QGraphicsScene* scene);
+    void                    remove();
     // кисть
     // создание линии инструментом brush
     void                    brushTool(QPointF beg,

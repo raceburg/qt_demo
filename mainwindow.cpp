@@ -97,6 +97,7 @@ void MainWindow::imageSelect()
     // загрузка изображения из выбранного файла
     if (!imageName.isEmpty())
     {
+        scene->setLayersProperty(InstructionName::clearWorkLayers, AllLayer);
         waView->show();
         ui->noImage->hide();
         if (!scene->addImage(imageName, LoadImageType::baseImage))
@@ -113,6 +114,11 @@ void MainWindow::imageSelect()
         ui->L1->show();
         ui->L2->show();
         ui->toolFrame->show();
+        // скрыть элементы интерфейса
+        ui->fractionLabel->hide();
+        ui->fractionTable->hide();
+        ui->fractionsSize->hide();
+        scene->setCurrentAction(ActionTypes::ModifyObjectUsedBrush);
     }
 }
 
@@ -178,8 +184,6 @@ void MainWindow::findContours(void)
     scene->setLayersProperty(InstructionName::clearWorkLayers, PolygonLayer);
     scene->addContoursOfStone(polygonList);
     scene->setCurrentAction(mode);
-    // обновление прозрачности для рабочей области
-//    opacity(0);
     // генерировать событие во время перемещения указателя мыши
     waView->setMouseTracking(true);
     if (rulerInfo.useRuler())
@@ -193,6 +197,7 @@ void MainWindow::findContours(void)
         fillViewFractionTbl();
         colorStones();
     }
+    scene->setCurrentAction(mode);
 }
 
 // назначение поверхности для ручной разметки
@@ -210,6 +215,7 @@ void MainWindow::setAreaType(int a)
 
 void MainWindow::fillViewFractionTbl()
 {
+    ui->fractionTable->clearContents();
     ui->fractionTable->setShowGrid(true); // Включаем сетку
     // Разрешаем выделение только одного элемента
     ui->fractionTable->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -223,9 +229,6 @@ void MainWindow::fillViewFractionTbl()
     ui->fractionTable->setHorizontalHeaderLabels(
                 QStringList()<<""<<"d"<<"%"<<"N");
     int k = 0;
-    //
-    // !!! обязательно добавить удаление QTableWidgetItem повторном изпользовании функции
-    // в противном случае будет утечка памяти
     foreach (StatisticRow row, viewStat.statRow)
     {
         QTableWidgetItem* item = new QTableWidgetItem("");
@@ -262,6 +265,8 @@ void MainWindow::colorStones()
 
 MainWindow::~MainWindow()
 {
+    delete scene;
+    delete waView;
     delete ui;
 }
 

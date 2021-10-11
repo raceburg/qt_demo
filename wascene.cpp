@@ -647,7 +647,7 @@ void wascene::setLayersProperty(
         }
         if (image != nullptr && items.toInt()&ImageLayer)
         {
-            mmLayer->remove(this);
+            mmLayer->remove();
             removeItem(image);
             delete image;
             image = nullptr;

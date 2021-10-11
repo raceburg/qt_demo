@@ -284,24 +284,10 @@ void wasceneManualLayer::setOpacity(double opacity)
 }
 
 // функция не используется
-void wasceneManualLayer::remove(QGraphicsScene *scene)
+void wasceneManualLayer::remove()
 {
-    polygonCounter = 1;
-    bruchCounter   = 1;
-    amCounter      = 1;
-    changeLogSheet.clear();
-    if (manuallyMarkedLayer != nullptr)
-    {
-        scene->removeItem(manuallyMarkedLayer);
-        delete manuallyMarkedLayer;
-        manuallyMarkedLayer = nullptr;
-    }
-    if (polygonTools != nullptr)
-    {
-        scene->removeItem(polygonTools);
-        delete polygonTools;
-        polygonTools = nullptr;
-    }
+    manuallyMarkedLayer->hide();
+//    changeLogSheet.clear();
 }
 
 // назначение видимости слоя ручной разметки
