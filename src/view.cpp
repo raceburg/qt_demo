@@ -189,6 +189,7 @@ void view::updateCursor()
             this->setCursor(cursor);
             break;
         }
+        case setRullerType:
         case setModifyObjectUsedPolygon:
         {
             this->setCursor(Qt::CrossCursor);

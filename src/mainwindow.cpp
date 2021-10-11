@@ -98,6 +98,8 @@ void MainWindow::imageSelect()
     if (!imageName.isEmpty())
     {
         scene->setLayersProperty(InstructionName::clearWorkLayers, AllLayer);
+        rulerInfo.clear();
+        waView->setWaMode(SceneAction::setDefaultType);
         waView->show();
         ui->noImage->hide();
         if (!scene->addImage(imageName, LoadImageType::baseImage))
@@ -143,6 +145,7 @@ void MainWindow::setActionMode(int m)
     if (mode&BIT(1)) waView->setBrushSize(ui->brushSize->value(), false);
     if (mode&BIT(1)) waView->setWaMode(SceneAction::setModifyObjectUsedBrush);
     if (mode&BIT(2)) waView->setWaMode(SceneAction::setModifyObjectUsedPolygon);
+    if (mode&BIT(3)||mode&BIT(2)) waView->setWaMode(SceneAction::setRullerType);
     // задание режима работы сцены
     if (mode&BIT(0)) scene->setCurrentAction(ActionTypes::SelectionType);
     if (mode&BIT(1)) scene->setLayersProperty(InstructionName::manualLayer_SetBrushSize, ui->brushSize->value());

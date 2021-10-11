@@ -31,6 +31,11 @@ struct RulerInfo
         item[Lnum] = ri;
         return true;
     }
+    void clear()
+    {
+        Perspective = 0;
+        item.clear();
+    }
 };
 
 #endif // RULERSTRUCT_H
